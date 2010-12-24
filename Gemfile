@@ -4,6 +4,7 @@ source 'http://rubygems.org'
 gem "sinatra"
 gem "rake"
 gem "redis"
+gem "SystemTimer"
 
 # app
 gem "indextank"

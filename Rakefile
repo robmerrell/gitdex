@@ -1,4 +1,7 @@
-desc "Load all of the repositories into IndexTank"
+require "bundler"
+Bundler.require(:default)
+
+desc "Load all of the repositories into IndexTank, expects INDEXTANK_API_URL"
 task :load_repos do
   
   repos = [
@@ -28,7 +31,7 @@ task :load_repos do
   # clean the repos dir
   system "rm -rf repos/*"
 
-  api_base = IndexTank::Client.new SETTINGS.index_tank_api_key
+  api_base = IndexTank::Client.new ENV["INDEXTANK_API_URL"]
   repos_index = api_base.indexes "repos"
 
   repos.each do |repo|

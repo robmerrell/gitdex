@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    SystemTimer (1.2.1)
     addressable (2.2.2)
     faraday (0.5.3)
       addressable (~> 2.2.2)
@@ -26,6 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SystemTimer
   git
   indextank
   rake
