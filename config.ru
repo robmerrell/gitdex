@@ -3,5 +3,5 @@ require 'bundler'
 
 Bundler.require
 
-require 'gitdex'
+require 'app/gitdex'
 run Sinatra::Application
