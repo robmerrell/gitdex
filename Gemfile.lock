@@ -1,14 +1,33 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.2)
+    faraday (0.5.3)
+      addressable (~> 2.2.2)
+      multipart-post (~> 1.0.1)
+      rack (>= 1.1.0, < 2)
+    git (1.2.5)
+    indextank (0.0.5)
+      faraday
+      json_pure (= 1.4.6)
+      yajl-ruby (= 0.7.7)
+    json_pure (1.4.6)
+    multipart-post (1.0.1)
     rack (1.2.1)
+    rake (0.8.7)
+    redis (2.1.1)
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
     tilt (1.2)
+    yajl-ruby (0.7.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  git
+  indextank
+  rake
+  redis
   sinatra
