@@ -1,0 +1,87 @@
+/** Page **/
+html {
+  background-color: #3a4148;
+}
+
+body {
+  font-family:"Lucida Grande", verdana, arial, helvetica, sans-serif;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+strong {
+  color: #000000;
+  font-weight: thick;
+}
+
+a {
+  color: #2C8FF2;
+}
+
+
+/** Header and Form **/
+#hd {
+  background-color: #0f1821;
+  border-bottom: 1px solid #efefef;
+  color: #ffffff;
+  height: 85px;
+}
+
+#search_form {
+  text-align: center;
+}
+
+.search_field {
+  font-size: 16px;
+  margin-top: 30px;
+  width: 500px;
+}
+
+.document {
+  border: 1px solid #000000;
+}
+
+
+/** Body **/
+.main_body {
+  background-color: #efefef;
+  min-height: 500px;
+  padding: 15px;
+}
+
+
+/** Footer **/
+#ft {
+  background-color: #0f1821;
+  color: #ffffff;
+  font-size: 12px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+
+
+#instructions {
+  color: #9e9e9e;
+  text-align: center;
+}
+
+#available_repos {
+  margin-top: 60px;
+}
+
+#available_repos p {
+  color: #000000;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#available_repos table {
+  width: 100%;
+}
+
+#available_repos tr td {
+  padding: 4px;
+}

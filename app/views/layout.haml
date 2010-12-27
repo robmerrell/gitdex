@@ -1,0 +1,19 @@
+!!! XML
+!!!
+
+%html
+  %head
+    %title Gitdex
+    %link{ :rel => 'stylesheet', :href => 'reset-fonts-grids.css', :type => 'text/css' }
+    %link{ :rel => 'stylesheet', :href => 'gitdex.css', :type => 'text/css' }
+  %body
+    #doc4.yui-t7.document
+      #hd
+        %form#search_form
+          %input.search_field{ :type => "text", :name => "search" }
+          %input{ :type => "submit", :value => "search" }
+      
+      #bd
+      .yui-g.main_body= yield
+        
+      #ft Gitdex was built for the <a href="http://www.indextank.com">IndexTank</a> Holiday Hacks Competition by <a href="http://twitter.com/robmerrell">Rob Merrell</a>

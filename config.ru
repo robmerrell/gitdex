@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler'
+require 'enumerator'
 
 Bundler.require
 

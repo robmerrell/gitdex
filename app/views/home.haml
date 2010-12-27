@@ -1,0 +1,21 @@
+#instructions 
+  %p Search through preselected github repositories with the search bar above.
+  %br
+  %br
+  %p Advanced search phrases:
+  %p
+    %ul
+      %li "<strong>in: rails/rails</strong>" - searches in the rails/rails repository
+      %li "<strong>between: 2010/01/01 and 2010/12/31</strong>" - searches for commits within a date range
+      %li "<strong>diff: ActiveRecord::Base</strong>" - searches for code within the diffs
+
+
+#available_repos
+  %p Available Repositories
+  
+  %table
+    - for repo_list in repos
+      %tr
+      - for repo in repo_list
+        %td
+          %a{ :href => "http://github.com/#{repo}" }= repo

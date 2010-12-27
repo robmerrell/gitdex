@@ -9,3 +9,4 @@ gem "SystemTimer"
 # app
 gem "indextank"
 gem "git"
+gem "haml"
