@@ -1,6 +1,21 @@
 require "bundler"
 Bundler.require(:default)
 
+desc "Test a search"
+task :test do
+  require "pp"
+  terms = "something"
+  
+  api_base = IndexTank::Client.new ENV["INDEXTANK_API_URL"]
+  repos_index = api_base.indexes "repos"
+  
+  fetch = "repo,message,date,author"
+  results = repos_index.search "repo:#{terms} OR author:#{terms} OR committer_name:#{terms} OR message:#{terms} OR diff_path:#{terms} OR diff_files:#{terms}", :fetch => fetch
+  
+  pp results
+end
+
+
 desc "Load all of the repositories into IndexTank, expects INDEXTANK_API_URL"
 task :load_repos do
   
