@@ -1,20 +1,6 @@
 require "bundler"
+require "app/search"
 Bundler.require(:default)
-
-desc "Test a search"
-task :test do
-  require "pp"
-  terms = "something"
-  
-  api_base = IndexTank::Client.new ENV["INDEXTANK_API_URL"]
-  repos_index = api_base.indexes "repos"
-  
-  fetch = "repo,message,date,author"
-  results = repos_index.search "repo:#{terms} OR author:#{terms} OR committer_name:#{terms} OR message:#{terms} OR diff_path:#{terms} OR diff_files:#{terms}", :fetch => fetch
-  
-  pp results
-end
-
 
 desc "Load all of the repositories into IndexTank, expects INDEXTANK_API_URL"
 task :load_repos do
@@ -41,7 +27,6 @@ task :load_repos do
     "postgres/postgres",
     "v8/v8"
   ]
-
 
   # clean the repos dir
   system "rm -rf repos/*"
@@ -84,3 +69,12 @@ task :load_repos do
   end
   
 end
+
+
+require "rake/testtask"
+desc "Run unit tests"
+Rake::TestTask.new("test") { |t|
+  t.pattern = 'tests/*_test.rb'
+  t.verbose = true
+  t.warning = false
+}
