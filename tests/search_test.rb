@@ -21,4 +21,23 @@ class SearchTest < Test::Unit::TestCase
     end
   end
   
+  
+  context 'parsing the "between:" option' do
+    should "parse between: 2010/01/01 and 2010/12/31 (with space)" do
+      between_terms = Search.parse_between_option("search pattern between: 2010/01/01 and 2010/12/31 more search terms")
+
+      assert_equal between_terms[:from], "2010/01/01"
+      assert_equal between_terms[:to], "2010/12/31"
+    end
+    
+    should "parse between: 2010/01/01 and 2010/12/31 (without space)" do
+      between_terms = Search.parse_between_option("search pattern between:2010/01/01 and 2010/12/31 more search terms")
+
+      assert_equal between_terms[:from], "2010/01/01"
+      assert_equal between_terms[:to], "2010/12/31"
+    end
+  end
+  
+  
+  
 end
