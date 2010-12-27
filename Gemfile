@@ -10,3 +10,7 @@ gem "SystemTimer"
 gem "indextank"
 gem "git"
 gem "haml"
+
+group :test do
+  gem "shoulda"
+end
