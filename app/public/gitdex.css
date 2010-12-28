@@ -85,3 +85,26 @@ a {
 #available_repos tr td {
   padding: 4px;
 }
+
+.result {
+  margin-bottom: 35px;
+}
+
+.result .message {
+  font-weight: bold;
+}
+
+.result .repo {
+  color: #717171;
+  float: left;
+  margin-right: 25px;
+}
+
+.result .date {
+  color: #717171;
+  float: left;
+}
+
+.result .diff {
+  clear: both;
+}

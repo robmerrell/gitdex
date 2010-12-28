@@ -9,8 +9,8 @@
   %body
     #doc4.yui-t7.document
       #hd
-        %form#search_form{ :action => "/search", :method => "post" }
-          %input.search_field{ :type => "text", :name => "search" }
+        %form#search_form{ :action => "/search", :method => "get" }
+          %input.search_field{ :type => "text", :name => "query", :value => params[:query] }
           %input{ :type => "submit", :value => "search" }
       
       #bd
