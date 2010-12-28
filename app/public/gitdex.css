@@ -31,8 +31,20 @@ a {
   height: 85px;
 }
 
+#logo {
+  float: left;
+  font-size: 25px;
+  line-height: 85px;
+  margin-left: 10px;
+}
+
+#logo a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 #search_form {
-  text-align: center;
+  margin-left: 250px;
 }
 
 .search_field {

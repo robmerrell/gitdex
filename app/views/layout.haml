@@ -9,6 +9,8 @@
   %body
     #doc4.yui-t7.document
       #hd
+        %span#logo
+          %a{ :href => "/" } Gitdex
         %form#search_form{ :action => "/search", :method => "get" }
           %input.search_field{ :type => "text", :name => "query", :value => params[:query] }
           %input{ :type => "submit", :value => "search" }
