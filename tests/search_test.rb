@@ -19,6 +19,11 @@ class SearchTest < Test::Unit::TestCase
       assert repo_terms.include? "rails/rails"
       assert repo_terms.include? "robmerrell/gitdex"
     end
+    
+    should "remove the in: options from a query" do
+      terms = Search.remove_in_option("This is a search in:rails/rails and also in in:robmerrell/gitdex")
+      assert_equal terms, "This is a search  and also in "
+    end
   end
   
   
@@ -36,8 +41,11 @@ class SearchTest < Test::Unit::TestCase
       assert_equal between_terms[:from], "2010/01/01"
       assert_equal between_terms[:to], "2010/12/31"
     end
+    
+    should "remote the between: option from a query" do
+      terms = Search.remove_between_option("search pattern between:2010/01/01 and 2010/12/31 more search terms")
+      assert_equal terms, "search pattern  more search terms"
+    end
   end
-  
-  
   
 end
