@@ -18,6 +18,10 @@ a {
   color: #2C8FF2;
 }
 
+.clear {
+  clear: both;
+}
+
 
 /** Header and Form **/
 #hd {
@@ -107,4 +111,12 @@ a {
 
 .result .diff {
   clear: both;
+}
+
+.navigation {
+  text-align: center;
+}
+
+.space {
+  margin: 0px 10px;
 }

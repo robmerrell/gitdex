@@ -1,0 +1,7 @@
+.navigation
+  - if show_prev
+    %a{ :href => "/search?query=#{params[:query]}&page=#{page - 1}" } prev
+    %span.space
+    
+  - if show_next
+    %a{ :href => "/search?query=#{params[:query]}&page=#{page + 1}" } next

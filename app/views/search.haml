@@ -1,3 +1,5 @@
+= haml :_navigation, :layout => false, :locals => {:show_prev => show_prev, :show_next => show_next, :page => page}
+
 - results.each do |result|
   .result
     .message= result["message"]
@@ -5,3 +7,5 @@
     .date= Time.parse(result["date"]).strftime("%B %d, %Y")
     .diff
       %a{ :href => "http://github.com/#{result['repo']}/commit/#{result['docid']}" } github
+
+= haml :_navigation, :layout => false, :locals => {:show_prev => show_prev, :show_next => show_next, :page => page}

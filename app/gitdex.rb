@@ -14,8 +14,15 @@ end
 
 
 get '/search' do
-  # perform the search
-  results = Search.search params[:query]
+  page = params[:page].to_i || 0
+  per_page = 10
   
-  haml :search, :locals => { :results => results }
+  start = page * per_page
+  show_prev = (start > 0)
+  
+  # perform the search
+  results = Search.search params[:query], start
+  show_next = (start + per_page < results["matches"])
+  
+  haml :search, :locals => { :results => results["results"], :show_prev => show_prev, :show_next => show_next, :page => page }
 end
