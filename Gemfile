@@ -8,7 +8,7 @@ gem "SystemTimer"
 
 # app
 gem "indextank"
-gem "git"
+gem "grit"
 gem "haml"
 
 group :test do
