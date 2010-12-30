@@ -1,6 +1,7 @@
 require "bundler"
 require "app/search"
 require "app/repos"
+require "app/git"
 Bundler.require(:default)
 
 desc "Load all of the repositories into IndexTank, expects INDEXTANK_API_URL"
@@ -17,22 +18,22 @@ task :load_repos do
     cmd = "git clone git://github.com/#{repo_name}.git repos/#{repo_name}"
     system cmd
     
-    repo = Grit::Repo.new("repos/#{repo_name}")
+    repo = Git::Repo.new("repos/#{repo_name}")
     
     # iterate through at most 1,000,000 commits and store info about each
-    repo.commits("master", 1000000).each do |commit|
-      puts "Processing #{repo_name} / #{commit.sha}"
+    repo.commits.each do |commit|
+      puts "Processing #{repo_name} -- #{commit.sha}"
 
       begin
         # group info for the commit
         repo_info = {
           :repo => repo_name,
-          :author => commit.author.name,
-          :committer_name => commit.committer.name,
-          :date => commit.date.to_i,
+          :author => commit.author,
+          :committer_name => commit.committer,
+          :date => commit.commit_timestamp,
           :message => commit.message,
-          :diff_files => commit.diffs.map { |d| d.b_path }.join(" "),
-          :diff_patch => commit.diffs.map { |d| d.diff }.join(" ")
+          :diff_patch => commit.diff,
+          :diff_files => commit.diff_files
         }
       
         # store log info on IndexTank
