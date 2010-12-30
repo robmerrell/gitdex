@@ -1,4 +1,4 @@
-require "repos"
+require "app/repos"
 require "app/search"
 
 set :views, File.dirname(__FILE__) + '/views'

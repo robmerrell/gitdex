@@ -1,5 +1,6 @@
 require "bundler"
 require "app/search"
+require "app/repos"
 Bundler.require(:default)
 
 desc "Load all of the repositories into IndexTank, expects INDEXTANK_API_URL"
