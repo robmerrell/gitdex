@@ -9,6 +9,14 @@
       %li <strong>between: 2010/01/01 and 2010/12/31</strong> - searches for commits within a date range
 
 
+#recent_searches
+  %p Recent Searches
+  - searches.each do |search|
+    %ul
+      %li
+        %a{ :href => "/search?query=#{CGI::escape search}" }= search
+
+
 #available_repos
   %p Available Repositories
   
