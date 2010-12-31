@@ -1,8 +1,8 @@
-Gitdex is my entry for IndexTank and Heroku's holiday search competition. Gitdex has 
+Gitdex is my entry for IndexTank's holiday search competition. Gitdex has 
 a predefined set of interesting github repositories that are fully indexed and searchable
 via the IndexTank API.
 
-Gitdex is a Sinatra app that uses Redis and IndexTank for data storage.
+Gitdex is a Sinatra app that uses IndexTank and Redis.
 
 Competition details at http://blog.indextank.com/93/holiday-hacks-indextank-heroku/
 
