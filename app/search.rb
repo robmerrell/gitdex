@@ -48,7 +48,7 @@ module Search
     between_terms.flatten!
     
     if !between_terms.empty?
-      { 0 => [[Time.parse(between_terms.first).to_i, Time.parse(between_terms.last).to_i]] }
+      { 0 => [[Time.parse(between_terms.first).to_i, Time.parse(between_terms.last).to_i + 86399]] }
     else
       {}
     end
