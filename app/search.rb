@@ -16,7 +16,7 @@ module Search
       search += "repo:#{repo} "
       search += "OR " if index < repo_terms.size
     end
-
+    
     # add the other fields to the search string
     query.strip!
     search += "author:#{query} OR committer_name:#{query} OR message:#{query} OR diff_path:#{query} OR diff_files:#{query}"
@@ -25,7 +25,7 @@ module Search
     api_base = IndexTank::Client.new ENV["INDEXTANK_API_URL"]
     repos_index = api_base.indexes "repos"
     
-    repos_index.search search, :fetch => fetch, :start => start
+    repos_index.search search, :fetch => fetch, :start => start, :docvar_filters => between_terms
   end
   
   # parses out the advanced search terms when using "in:"
@@ -42,7 +42,11 @@ module Search
     between_terms = query.scan /between:\s?(\S+) and (\S+)/
     between_terms.flatten!
     
-    {:from => between_terms.first, :to => between_terms.last}
+    if !between_terms.empty?
+      { 0 => [[Time.parse(between_terms.first).to_i, Time.parse(between_terms.last).to_i]] }
+    else
+      {}
+    end
   end
   
   def self.remove_between_option(query)

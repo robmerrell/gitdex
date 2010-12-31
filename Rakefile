@@ -37,11 +37,12 @@ task :load_repos do
         }
       
         # store log info on IndexTank
-        repos_index.document(commit.sha).add(repo_info)
+        repos_index.document(commit.sha).add(repo_info, :variables => { 0 => commit.commit_timestamp })
       rescue
         puts "failed to store: #{commit.sha}"
       end
     end
+    exit
   end
   
 end
