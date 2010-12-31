@@ -14,17 +14,22 @@ module Search
     fetch = "repo,message,date,author"
     repo_terms.each_with_index do |repo, index|
       search += "repo:#{repo} "
-      search += "OR " if index < repo_terms.size
+      search += "OR " if index < repo_terms.size-1
     end
     
     # add the other fields to the search string
     query.strip!
-    search += "author:#{query} OR committer_name:#{query} OR message:#{query} OR diff_path:#{query} OR diff_files:#{query}"
+    if !query.empty?
+      search += "AND " if !repo_terms.empty?
+      search += "(author:#{query} OR committer_name:#{query} OR message:#{query} OR diff_path:#{query} OR diff_files:#{query})"
+    else
+      search += "slug:slug" if search.empty?
+    end
     
     # connect to IndexTank and search
     api_base = IndexTank::Client.new ENV["INDEXTANK_API_URL"]
     repos_index = api_base.indexes "repos"
-    
+
     repos_index.search search, :fetch => fetch, :start => start, :docvar_filters => between_terms
   end
   

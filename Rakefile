@@ -33,7 +33,8 @@ task :load_repos do
           :date => commit.commit_timestamp,
           :message => commit.message,
           :diff_patch => commit.diff,
-          :diff_files => commit.diff_files
+          :diff_files => commit.diff_files,
+          :slug => "slug"
         }
       
         # store log info on IndexTank
