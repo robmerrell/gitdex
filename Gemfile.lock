@@ -12,7 +12,7 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
     haml (3.0.25)
-    indextank (0.0.5)
+    indextank (0.0.6)
       faraday
       json_pure (= 1.4.6)
       yajl-ruby (= 0.7.7)
@@ -36,7 +36,7 @@ DEPENDENCIES
   SystemTimer
   grit
   haml
-  indextank
+  indextank (= 0.0.6)
   rake
   redis
   shoulda

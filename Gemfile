@@ -7,7 +7,7 @@ gem "redis"
 gem "SystemTimer"
 
 # app
-gem "indextank"
+gem "indextank", "0.0.6"
 gem "grit"
 gem "haml"
 
