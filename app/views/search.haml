@@ -4,7 +4,7 @@
   .result
     .message= result["message"]
     .repo= result["repo"]
-    .date= Time.parse(result["date"]).strftime("%B %d, %Y")
+    .date= Time.at(result["commit_timestamp"].to_i).strftime("%B %d, %Y")
     .diff
       %a{ :href => "http://github.com/#{result['repo']}/commit/#{result['docid']}" } github
 
