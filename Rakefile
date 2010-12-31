@@ -43,7 +43,6 @@ task :load_repos do
         puts "failed to store: #{commit.sha}"
       end
     end
-    exit
   end
   
 end
