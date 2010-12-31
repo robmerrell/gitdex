@@ -20,8 +20,18 @@ task :load_repos do
     
     repo = Git::Repo.new("repos/#{repo_name}")
     
+    if ENV['REPO']
+      if ENV['REPO'] == repo_name
+        commits = repo.commits(ENV['FROM'])  
+      else
+        commits = repo.commits
+      end
+    else
+      commits = repo.commits
+    end
+    
     # iterate through at most 1,000,000 commits and store info about each
-    repo.commits.each do |commit|
+    commits.each do |commit|
       puts "Processing #{repo_name} -- #{commit.sha}"
 
       begin
