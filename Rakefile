@@ -9,6 +9,7 @@ task :load_repos do
 
   # clean the repos dir
   system "rm -rf repos/*"
+  count = 0
 
   api_base = IndexTank::Client.new ENV["INDEXTANK_API_URL"]
   repos_index = api_base.indexes "repos"
@@ -20,18 +21,8 @@ task :load_repos do
     
     repo = Git::Repo.new("repos/#{repo_name}")
     
-    if ENV['REPO']
-      if ENV['REPO'] == repo_name
-        commits = repo.commits(ENV['FROM'])  
-      else
-        commits = repo.commits
-      end
-    else
-      commits = repo.commits
-    end
-    
     # iterate through at most 1,000,000 commits and store info about each
-    commits.each do |commit|
+    repo.commits.each do |commit|
       puts "Processing #{repo_name} -- #{commit.sha}"
 
       begin
@@ -49,11 +40,16 @@ task :load_repos do
       
         # store log info on IndexTank
         repos_index.document(commit.sha).add(repo_info, :variables => { 0 => commit.commit_timestamp })
+      rescue Interrupt => i
+        puts i
+        count += 1
       rescue
         puts "failed to store: #{commit.sha}"
       end
     end
   end
+  
+  puts count
   
 end
 

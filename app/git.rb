@@ -45,13 +45,9 @@ module Git
       # assemble a collection of all commits of the repository
       # this can get rather large and use quite a bit of memory
       # on large repos, but I have RAM to spare at the moment
-      def load_commits(starting_sha="")
-        from = ""
-        if !starting_sha.empty?
-          from = " #{ops[:from]}..origin"
-        end
-        
-        cmd = "git --no-pager --git-dir=#{@repo_path} log --pretty=format:'%H%x09%an%x09%cn%x09%at' #{from}"
+      def load_commits()
+        cmd = "git --no-pager --git-dir=#{@repo_path} log --pretty=format:'%H%x09%an%x09%cn%x09%at'"
+        puts cmd
         commit_logs = `#{cmd}`
 
         commit_logs.each_line do |line|
