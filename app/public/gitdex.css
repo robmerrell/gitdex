@@ -144,3 +144,9 @@ a {
 .space {
   margin: 0px 10px;
 }
+
+#noresults {
+  font-size: 26px;
+  margin-top: 200px;
+  text-align: center;
+}

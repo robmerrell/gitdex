@@ -1,6 +1,9 @@
 = haml :_navigation, :layout => false, :locals => {:show_prev => show_prev, :show_next => show_next, :page => page}
 %div{ :style => "margin-bottom: 30px;" }
 
+- if results.empty?
+  #noresults We didn't find any results for your search, try another one.
+
 - results.each do |result|
   .result
     .message= result["message"]
